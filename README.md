@@ -124,28 +124,28 @@ function message(text)
 end
 
 local flags = {
-    ESPdoors = false,
-    ESPkeys = false,
-    ESPitems = false,
-    ESPbooks = false,
-    ESPrush = false,
-    ESPchest = false,
-    ESPlocker = false,
-    ESPhumans = false,
-    ESPgold = false,
-    goldESPvalue = 0,
-    hintrush = false,
-    light = false,
-    instapp = false,
-    noseek = false,
-    nogates = false,
-    nopuzzle = false,
-    noa90 = false,
-    noskeledoors = false,
-    noscreech = false,
-    getcode = false,
-    roomsnolock = false,
-    draweraura = false,
+    ESPdoors = true,
+    ESPkeys = true,
+    ESPitems = true,
+    ESPbooks = true,
+    ESPrush = true,
+    ESPchest = true,
+    ESPlocker = true,
+    ESPhumans = true,
+    ESPgold = true,
+    goldESPvalue = 100,
+    hintrush = true,
+    light = true,
+    instapp = true,
+    noseek = true,
+    nogates = true,
+    nopuzzle = true,
+    noa90 = true,
+    noskeledoors = true,
+    noscreech = true,
+    getcode = true,
+    roomsnolock = true,
+    draweraura = true,
     autorooms = false,
 }
 
@@ -156,7 +156,7 @@ local window_player = library.window("Player")
 local window_ESP = library.window("ESP")
 local window_misc = library.window("Misc")
 
-window_player.toggle("Client Glow",false,function(val)
+window_player.toggle("Client Glow",true,function(val)
     flags.light = val
    
     if val then
@@ -170,7 +170,7 @@ window_player.toggle("Client Glow",false,function(val)
     end
 end)
 
-window_player.toggle("Instant Use",false,function(val)
+window_player.toggle("Instant Use",true,function(val)
     flags.instapp = val
     
     local holdconnect
@@ -181,7 +181,7 @@ window_player.toggle("Instant Use",false,function(val)
     repeat task.wait() until not flags.instapp
     holdconnect:Disconnect()
 end)
-window_ESP.toggle("Door ESP",false,function(val)
+window_ESP.toggle("Door ESP",true,function(val)
     flags.ESPdoors = val
     
     if val then
@@ -221,7 +221,7 @@ window_ESP.toggle("Door ESP",false,function(val)
     end
 end)
 
-window_ESP.toggle("Key Lever ESP",false,function(val)
+window_ESP.toggle("Key Lever ESP",true,function(val)
     flags.ESPkeys = val
     
     if val then
@@ -279,7 +279,7 @@ window_ESP.toggle("Key Lever ESP",false,function(val)
     end
 end)
 
-window_ESP.toggle("Item ESP",false,function(val)
+window_ESP.toggle("Item ESP",true,function(val)
     flags.ESPitems = val
     
     if val then
@@ -333,9 +333,8 @@ window_ESP.toggle("Item ESP",false,function(val)
     end
 end)
 
-window_ESP.toggle("Book/Breaker ESP",false,function(val)
+window_ESP.toggle("Book/Breaker ESP",true,function(val)
     flags.ESPbooks = val
-    
     if val then
         local function check(v)
             if v:IsA("Model") and (v.Name == "LiveHintBook" or v.Name == "LiveBreakerPolePickup") then
@@ -384,10 +383,10 @@ end)
 
 local entitynames = {"RushMoving","AmbushMoving","Snare","A60","A120"}
 
-window_ESP.toggle("Entity ESP",false,function(val)
+window_ESP.toggle("Entity ESP",true,function(val)
     flags.ESPrush = val
     
-    if val then
+    if hen
         local addconnect
         addconnect = workspace.ChildAdded:Connect(function(v)
             if table.find(entitynames,v.Name) then
@@ -450,9 +449,8 @@ window_ESP.toggle("Entity ESP",false,function(val)
     end
 end)
 
-window_ESP.toggle("Locker ESP",false,function(val)
+window_ESP.toggle("Locker ESP",true,function(val)
     flags.ESPlocker = val
-    
     if val then
         local function check(v)
             if v:IsA("Model") then
@@ -505,7 +503,7 @@ window_ESP.toggle("Locker ESP",false,function(val)
     end
 end)
 
-window_ESP.toggle("Chest ESP",false,function(val)
+window_ESP.toggle("Chest ESP",true,function(val)
     flags.ESPchest = val
     
     if val then
@@ -559,7 +557,7 @@ window_ESP.toggle("Chest ESP",false,function(val)
     end
 end)
 
-window_ESP.toggle("Player ESP",false,function(val)
+window_ESP.toggle("Player ESP",true,function(val)
     flags.ESPhumans = val
     
     if val then
@@ -606,7 +604,7 @@ window_ESP.toggle("Player ESP",false,function(val)
     end
 end)
 
-window_ESP.toggle("GoldPile ESP",false,function(val)
+window_ESP.toggle("GoldPile ESP",true,function(val)
     flags.ESPgold = val
     
     if val then
@@ -665,7 +663,7 @@ window_ESP.slider("Minimum Gold Value",5,150,5,5,function(val)
     flags.goldESPvalue = val
 end)
 
-window_misc.toggle("Notify Entities",false,function(val)
+window_misc.toggle("Notify Entities",true,function(val)
     flags.hintrush = val
     
     if val then
@@ -692,7 +690,7 @@ window_misc.toggle("Notify Entities",false,function(val)
     end
 end)
 
-window_misc.toggle("Disable Seek Chase",false,function(val)
+window_misc.toggle("Disable Seek Chase",true,function(val)
     flags.noseek = val
     
     if val then
@@ -710,7 +708,7 @@ window_misc.toggle("Disable Seek Chase",false,function(val)
     end
 end)
 
-window_misc.toggle("Delete Gates",false,function(val)
+window_misc.toggle("Delete Gates",true,function(val)
     flags.nogates = val
     
     if val then
@@ -732,7 +730,7 @@ window_misc.toggle("Delete Gates",false,function(val)
     end
 end)
 
-window_misc.toggle("delete puzzle door",false,function(val)
+window_misc.toggle("delete puzzle door",true,function(val)
     flags.nopuzzle = val
     
     if val then
@@ -758,7 +756,7 @@ end)
 local screechremote = entityinfo:FindFirstChild("Screech")
 
 if screechremote then
-    window_misc.toggle("Harmless Screech",false,function(val)
+    window_misc.toggle("Harmless Screech",true,function(val)
         flags.noscreech = val
         
         if val then
@@ -769,7 +767,7 @@ if screechremote then
     end)
 end
 
-window_misc.toggle("No Skeleton Doors",false,function(val)
+window_misc.toggle("No Skeleton Doors",true,function(val)
     flags.noskeledoors = val
     
     if val then
@@ -834,7 +832,7 @@ window_misc.toggle("Auto Library Code",false,function(val)
     end
 end)
 
-window_misc.toggle("A-000 Door, No Locks",false,function(val)
+window_misc.toggle("A-000 Door, No Locks",true,function(val)
     flags.roomsnolock = val
     
     if val then
@@ -861,10 +859,10 @@ window_misc.toggle("A-000 Door, No Locks",false,function(val)
     end
 end)
 
-window_misc.toggle("Loot Aura",false,function(val)
+window_misc.toggle("Loot Aura",true,function(val)
     flags.draweraura = val
     
-    if val then
+    if van
         local function setup(room)
             local function check(v)
                 if v:IsA("Model") then
